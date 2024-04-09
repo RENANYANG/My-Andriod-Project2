@@ -88,8 +88,6 @@ class MapsFragment : Fragment() {
         val sharedPref = activity?.getSharedPreferences(getString(R.string.shared_file_saved_locations), Context.MODE_PRIVATE)
         val locationInfoStr = sharedPref?.getString(getString(R.string.shared_key_saved_locations), null)
 
-        Log.d(TAG, locationInfoStr.toString())
-
         try {
             return Gson().fromJson<ArrayList<LocationInfo>>(locationInfoStr, ArrayList::class.java)
         } catch (e: Exception){
@@ -100,6 +98,9 @@ class MapsFragment : Fragment() {
     private fun saveLocation(locationInfo: LocationInfo) {
         val locationInfoList = this.getLocationList()
         locationInfoList?.add(locationInfo)
+
+        Log.d(TAG, locationInfoList.toString())
+
         val sharedPref = activity?.getSharedPreferences(getString(R.string.shared_file_saved_locations), Context.MODE_PRIVATE) ?: return
         with (sharedPref.edit()) {
             putString(getString(R.string.shared_key_saved_locations), Gson().toJson(locationInfoList))

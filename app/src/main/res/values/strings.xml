@@ -8,8 +8,12 @@
     <string name="title_option">Option</string>
     <string name="save_location">Save Location</string>
     <string name="hint_save_location">Enter location name for saving.</string>
-    <string name="student_name_1">youngtaek</string>
+    <string name="student_name_1">Young Taek Song</string>
     <string name="student_id_1">1122390</string>
+    <string name="student_name_2">Syed Shahbaz</string>
+    <string name="student_id_2">1195561</string>
+    <string name="student_name_3">Ryan Ren</string>
+    <string name="student_id_3">1180042</string>
     <string name="btn_back">Back</string>
     <string name="shared_file_saved_locations">com.map1.group.project2.SAVED_LOCATIONS</string>
     <string name="shared_key_saved_locations">SAVED_LOCATIONS</string>
