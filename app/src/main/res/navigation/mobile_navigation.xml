@@ -18,14 +18,14 @@
         tools:layout="@layout/fragment_maps" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.map1.group.project2.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_locations"
+        android:name="com.map1.group.project2.ui.locations.LocationsFragment"
+        android:label="@string/title_locations"
+        tools:layout="@layout/fragment_locations" />
 
     <fragment
         android:id="@+id/navigation_share"
-        android:name="com.map1.group.project2.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="com.map1.group.project2.ui.locations.LocationsFragment"
+        android:label="@string/title_share"
+        tools:layout="@layout/fragment_locations" />
 </navigation>
