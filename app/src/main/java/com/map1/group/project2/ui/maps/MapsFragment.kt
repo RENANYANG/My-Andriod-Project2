@@ -2,7 +2,8 @@ package com.map1.group.project2.ui.maps
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.SharedPreferences
+import android.health.connect.datatypes.ExerciseRoute
+import android.location.Location
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -25,7 +26,10 @@ import com.map1.group.project2.Constants.DEFAULT_ZOOM
 import com.map1.group.project2.Constants.LONDON_LAT
 import com.map1.group.project2.Constants.LONDON_LONG
 import com.map1.group.project2.Constants.TAG
+import com.map1.group.project2.LocationInfo
 import com.map1.group.project2.R
+import com.google.gson.Gson
+import java.lang.Exception
 
 class MapsFragment : Fragment() {
 
@@ -79,17 +83,32 @@ class MapsFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
     }
 
-    private fun onMapClicked() {
-        Log.d(TAG, "onMapClicked")
+    private fun getLocationList(): ArrayList<LocationInfo>? {
 
+        val sharedPref = activity?.getSharedPreferences(getString(R.string.shared_file_saved_locations), Context.MODE_PRIVATE)
+        val locationInfoStr = sharedPref?.getString(getString(R.string.shared_key_saved_locations), null)
+
+        Log.d(TAG, locationInfoStr.toString())
+
+        try {
+            return Gson().fromJson<ArrayList<LocationInfo>>(locationInfoStr, ArrayList::class.java)
+        } catch (e: Exception){
+            return ArrayList<LocationInfo>()
+        }
+    }
+
+    private fun saveLocation(locationInfo: LocationInfo) {
+        val locationInfoList = this.getLocationList()
+        locationInfoList?.add(locationInfo)
         val sharedPref = activity?.getSharedPreferences(getString(R.string.shared_file_saved_locations), Context.MODE_PRIVATE) ?: return
-        Log.d(TAG, sharedPref.toString())
         with (sharedPref.edit()) {
-            putString(getString(R.string.shared_key_saved_locations), "TEST")
+            putString(getString(R.string.shared_key_saved_locations), Gson().toJson(locationInfoList))
             apply()
         }
-        val test = sharedPref.getString(getString(R.string.shared_key_saved_locations), "")
-        Log.d(TAG, test.toString())
+    }
+
+    private fun onMapClicked() {
+        Log.d(TAG, "onMapClicked")
 
         mMap.setOnMapClickListener {
             Log.d(TAG, "onMapClickListener")
@@ -120,9 +139,10 @@ class MapsFragment : Fragment() {
             val inputLocation = editText.text.toString()
             if (inputLocation.isEmpty()) {
                 Toast.makeText(requireContext(), "Location name is null", Toast.LENGTH_SHORT).show()
-                dialog.dismiss()
             } else {
+                this.saveLocation(LocationInfo(inputLocation, strLat, strLng))
             }
+            dialog.dismiss()
         }
         builder.setNegativeButton("Cancel") { dialog, which ->
             dialog.cancel()
