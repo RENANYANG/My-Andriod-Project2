@@ -30,6 +30,58 @@
             android:text="@string/student_id_1"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textSize="34sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/student_name_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layoutDirection="locale"
+            android:text="@string/student_name_1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="34sp" />
+
+        <TextView
+            android:id="@+id/student_id_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layoutDirection="locale"
+            android:text="@string/student_id_1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="34sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/student_name_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layoutDirection="locale"
+            android:text="@string/student_name_1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="34sp" />
+
+        <TextView
+            android:id="@+id/student_id_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layoutDirection="locale"
+            android:text="@string/student_id_1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="34sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </FrameLayout>
