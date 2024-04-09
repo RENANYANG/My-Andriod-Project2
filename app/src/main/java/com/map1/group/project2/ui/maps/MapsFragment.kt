@@ -2,8 +2,6 @@ package com.map1.group.project2.ui.maps
 
 import android.app.AlertDialog
 import android.content.Context
-import android.health.connect.datatypes.ExerciseRoute
-import android.location.Location
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -26,9 +24,10 @@ import com.map1.group.project2.Constants.DEFAULT_ZOOM
 import com.map1.group.project2.Constants.LONDON_LAT
 import com.map1.group.project2.Constants.LONDON_LONG
 import com.map1.group.project2.Constants.TAG
-import com.map1.group.project2.LocationInfo
+import com.map1.group.project2.LocationItem
 import com.map1.group.project2.R
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.lang.Exception
 
 class MapsFragment : Fragment() {
@@ -83,19 +82,20 @@ class MapsFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
     }
 
-    private fun getLocationList(): ArrayList<LocationInfo>? {
+    private fun getLocationList(): ArrayList<LocationItem>? {
 
         val sharedPref = activity?.getSharedPreferences(getString(R.string.shared_file_saved_locations), Context.MODE_PRIVATE)
         val locationInfoStr = sharedPref?.getString(getString(R.string.shared_key_saved_locations), null)
 
         try {
-            return Gson().fromJson<ArrayList<LocationInfo>>(locationInfoStr, ArrayList::class.java)
+            val listType = object : TypeToken<ArrayList<LocationItem>>() {}.type
+            return Gson().fromJson(locationInfoStr, listType)
         } catch (e: Exception){
-            return ArrayList<LocationInfo>()
+            return ArrayList<LocationItem>()
         }
     }
 
-    private fun saveLocation(locationInfo: LocationInfo) {
+    private fun saveLocation(locationInfo: LocationItem) {
         val locationInfoList = this.getLocationList()
         locationInfoList?.add(locationInfo)
 
@@ -141,7 +141,7 @@ class MapsFragment : Fragment() {
             if (inputLocation.isEmpty()) {
                 Toast.makeText(requireContext(), "Location name is null", Toast.LENGTH_SHORT).show()
             } else {
-                this.saveLocation(LocationInfo(inputLocation, strLat, strLng))
+                this.saveLocation(LocationItem(inputLocation, strLat, strLng))
             }
             dialog.dismiss()
         }
