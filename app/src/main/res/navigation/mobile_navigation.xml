@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_maps"
-        android:name="com.map1.group.project2.ui.maps.MapsFragment2"
+        android:name="com.map1.group.project2.ui.maps.MapsFragment"
         android:label="@string/title_maps"
-        tools:layout="@layout/fragment_maps" />
+        tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_locations"
