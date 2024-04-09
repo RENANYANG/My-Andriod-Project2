@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/navigation_option"
-        android:name="com.map1.group.project2.ui.locations.LocationsFragment"
+        android:name="com.map1.group.project2.ui.option.OptionFragment"
         android:label="@string/title_option"
-        tools:layout="@layout/fragment_locations" />
+        tools:layout="@layout/fragment_option" />
 </navigation>
