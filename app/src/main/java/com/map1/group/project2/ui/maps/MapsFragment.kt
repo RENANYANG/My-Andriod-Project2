@@ -1,6 +1,8 @@
 package com.map1.group.project2.ui.maps
 
 import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -79,6 +81,15 @@ class MapsFragment : Fragment() {
 
     private fun onMapClicked() {
         Log.d(TAG, "onMapClicked")
+
+        val sharedPref = activity?.getSharedPreferences(getString(R.string.shared_file_saved_locations), Context.MODE_PRIVATE) ?: return
+        Log.d(TAG, sharedPref.toString())
+        with (sharedPref.edit()) {
+            putString(getString(R.string.shared_key_saved_locations), "TEST")
+            apply()
+        }
+        val test = sharedPref.getString(getString(R.string.shared_key_saved_locations), "")
+        Log.d(TAG, test.toString())
 
         mMap.setOnMapClickListener {
             Log.d(TAG, "onMapClickListener")
