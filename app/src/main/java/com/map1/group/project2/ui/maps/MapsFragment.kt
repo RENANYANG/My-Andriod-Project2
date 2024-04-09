@@ -19,6 +19,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.map1.group.project2.Constants.DEFAULT_ZOOM
+import com.map1.group.project2.Constants.LONDON_LAT
+import com.map1.group.project2.Constants.LONDON_LONG
+import com.map1.group.project2.Constants.TAG
 import com.map1.group.project2.R
 
 class MapsFragment : Fragment() {
@@ -26,12 +30,6 @@ class MapsFragment : Fragment() {
     private lateinit var mMap: GoogleMap
     private lateinit var button: Button
     private var prevMarker: Marker? = null
-
-    companion object {
-        const val DEFAULT_ZOOM: Float = 12f
-        const val LONDON_LAT: Double = 42.9849
-        const val LONDON_LONG: Double = 81.24176 * -1
-    }
 
     private val callback = OnMapReadyCallback { googleMap ->
         /**
@@ -80,17 +78,16 @@ class MapsFragment : Fragment() {
     }
 
     private fun onMapClicked() {
-        Log.d("y_song", "onMapClicked")
+        Log.d(TAG, "onMapClicked")
 
         mMap.setOnMapClickListener {
-            Log.d("y_song", "onMapClickListener")
+            Log.d(TAG, "onMapClickListener")
 
             val location = LatLng(it.latitude, it.longitude)
-
             prevMarker?.remove()
             prevMarker = mMap.addMarker(MarkerOptions().position(location)
                 .title("Point")
-                .snippet(location.toString())
+                .snippet(String.format("Lat/Lng: (%.4f, %.4f)", it.latitude, it.longitude))
             )
         }
     }
@@ -99,9 +96,9 @@ class MapsFragment : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
 
         val strLat:String = String.format("%.4f", prevMarker?.position?.latitude)
-        val strLong:String = String.format("%.4f", prevMarker?.position?.longitude)
+        val strLng:String = String.format("%.4f", prevMarker?.position?.longitude)
 
-        builder.setTitle("* Latitude: $strLat\n* Longitude: $strLong")
+        builder.setTitle("* Lat: $strLat\n* Lng: $strLng")
 
         val view = layoutInflater.inflate(R.layout.dialog_save_location, null)
         val editText = view.findViewById<EditText>(R.id.edit_text_input)
