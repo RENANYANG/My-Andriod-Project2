@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">project2</string>
     <string name="google_map_api_key">AIzaSyBWQXn03ILPkA-ORPW1TeHU4mMpEjDCFoE</string>
+    <string name="tag">y_song</string>
     <string name="title_home">Home</string>
     <string name="title_maps">Maps</string>
     <string name="title_locations">Locations</string>
     <string name="title_share">Share</string>
     <string name="title_option">Option</string>
+    <string name="save_location">Save Location</string>
     <string name="student_name_1">youngtaek</string>
     <string name="student_id_1">1122390</string>
 </resources>
