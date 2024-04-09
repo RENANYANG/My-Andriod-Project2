@@ -28,4 +28,10 @@
         android:name="com.map1.group.project2.ui.locations.LocationsFragment"
         android:label="@string/title_share"
         tools:layout="@layout/fragment_locations" />
+
+    <fragment
+        android:id="@+id/navigation_option"
+        android:name="com.map1.group.project2.ui.locations.LocationsFragment"
+        android:label="@string/title_option"
+        tools:layout="@layout/fragment_locations" />
 </navigation>
