@@ -8,6 +8,7 @@
     <string name="title_share">Share</string>
     <string name="title_option">Option</string>
     <string name="save_location">Save Location</string>
+    <string name="hint_save_location">Enter location name for saving.</string>
     <string name="student_name_1">youngtaek</string>
     <string name="student_id_1">1122390</string>
 </resources>

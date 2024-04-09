@@ -1,9 +1,6 @@
 package com.map1.group.project2.ui.maps
 
-import android.Manifest
-import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.content.pm.PackageManager
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -11,8 +8,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
-import androidx.core.app.ActivityCompat
+import android.widget.Toast
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -26,6 +24,7 @@ import com.map1.group.project2.R
 class MapsFragment : Fragment() {
 
     private lateinit var mMap: GoogleMap
+    private lateinit var button: Button
     private var prevMarker: Marker? = null
 
     companion object {
@@ -70,6 +69,12 @@ class MapsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        button = view.findViewById(R.id.save_location)
+        button.setOnClickListener{
+            this.showInputDialog()
+        }
+
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
     }
@@ -88,34 +93,33 @@ class MapsFragment : Fragment() {
                 .snippet(location.toString())
             )
         }
+    }
 
-        mMap.setOnMarkerClickListener { marker ->
-            Log.d("y_song", "debug-----------1")
-            Log.d("y_song", marker.position.toString())
+    private fun showInputDialog() {
+        val builder = AlertDialog.Builder(requireContext())
 
-            val builder = AlertDialog.Builder(requireContext())
-            builder.setTitle("Edit Marker Title")
+        val strLat:String = String.format("%.4f", prevMarker?.position?.latitude)
+        val strLong:String = String.format("%.4f", prevMarker?.position?.longitude)
 
-            Log.d("y_song", "debug-----------2")
-            val input = EditText(requireContext())
-            input.setText(marker.title)
-            builder.setView(input)
+        builder.setTitle("* Latitude: $strLat\n* Longitude: $strLong")
 
+        val view = layoutInflater.inflate(R.layout.dialog_save_location, null)
+        val editText = view.findViewById<EditText>(R.id.edit_text_input)
 
-            Log.d("y_song", "debug-----------3")
-            builder.setPositiveButton("OK") { dialog, which ->
-                val newTitle = input.text.toString()
-                marker.title = newTitle
-                marker.showInfoWindow()
+        builder.setView(view)
+
+        builder.setPositiveButton("OK") { dialog, which ->
+            val inputLocation = editText.text.toString()
+            if (inputLocation.isEmpty()) {
+                Toast.makeText(requireContext(), "Location name is null", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            } else {
             }
-
-            builder.setNegativeButton("Cancel") { dialog, which ->
-                dialog.cancel()
-            }
-
-            Log.d("y_song", "debug-----------4")
-
-            true
         }
+        builder.setNegativeButton("Cancel") { dialog, which ->
+            dialog.cancel()
+        }
+
+        builder.show()
     }
 }
