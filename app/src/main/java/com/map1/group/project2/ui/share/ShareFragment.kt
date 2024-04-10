@@ -1,6 +1,7 @@
 package com.map1.group.project2.ui.share
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -78,6 +79,21 @@ class ShareFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 Log.d(TAG, "onNothingSelected")
             }
+        }
+
+        binding.btnShare.setOnClickListener{
+            Log.d(TAG, "click share button")
+
+            var shareContent = "This is my favorite location"
+            shareContent += "\n\n * ID: ${binding.locationId.text}"
+            shareContent += "\n\n * Name: ${binding.locationName.text}"
+            shareContent += "\n\n * Latitude: ${binding.locationLat.text}"
+            shareContent += "\n\n * Longitude: ${binding.locationLng.text}"
+
+            val intent = Intent(Intent.ACTION_SEND_MULTIPLE)
+            intent.type = "text/plain"
+            intent.putExtra(Intent.EXTRA_TEXT, shareContent)
+            startActivity(Intent.createChooser(intent, getString(R.string.text_share_to_other_app)))
         }
 
         //return inflater.inflate(R.layout.fragment_share, container, false)

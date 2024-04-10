@@ -1,10 +1,15 @@
 package com.map1.group.project2
 
+import android.media.Image
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.map1.group.project2.Constants.TAG
 
 class LocationAdapter(private val itemList: ArrayList<LocationItem>) : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>() {
 
@@ -29,5 +34,11 @@ class LocationAdapter(private val itemList: ArrayList<LocationItem>) : RecyclerV
         val tv_name = itemView.findViewById<TextView>(R.id.location_name)
         val tv_lat = itemView.findViewById<TextView>(R.id.location_lat)
         val tv_lng = itemView.findViewById<TextView>(R.id.location_lng)
+
+        init {
+            itemView.setOnClickListener{
+                Toast.makeText(itemView.context, "Latitude: ${tv_lat.text} / Longitude: ${tv_lng.text}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

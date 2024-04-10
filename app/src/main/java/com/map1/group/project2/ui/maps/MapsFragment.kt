@@ -107,6 +107,8 @@ class MapsFragment : Fragment() {
             putString(getString(R.string.shared_key_saved_locations), Gson().toJson(locationInfoList))
             apply()
         }
+
+        Toast.makeText(requireContext(), "Add new location [${locationInfo.name}] into the Location Tab.", Toast.LENGTH_SHORT).show()
     }
 
     private fun onMapClicked() {

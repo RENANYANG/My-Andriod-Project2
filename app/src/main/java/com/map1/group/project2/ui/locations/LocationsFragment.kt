@@ -43,17 +43,11 @@ class LocationsFragment : Fragment() {
 //            textView.text = it
 //        }
 
-
         val locationList = this.getLocationList()
         val locationAdapter = locationList?.let { LocationAdapter(it) }
         locationAdapter?.notifyDataSetChanged()
         binding.locationRecycler.adapter = locationAdapter
         binding.locationRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-
-
-
-
-
 
         return root
     }

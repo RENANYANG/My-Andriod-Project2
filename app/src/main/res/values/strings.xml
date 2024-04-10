@@ -3,9 +3,9 @@
     <string name="google_map_api_key">AIzaSyBWQXn03ILPkA-ORPW1TeHU4mMpEjDCFoE</string>
     <string name="title_home">Home</string>
     <string name="title_maps">Maps</string>
-    <string name="title_locations">Locations</string>
+    <string name="title_locations">Places</string>
     <string name="title_share">Share</string>
-    <string name="title_option">Option</string>
+    <string name="title_option">About</string>
     <string name="save_location">Save Location</string>
     <string name="hint_save_location">Enter location name for saving.</string>
     <string name="student_name_1">Young Taek Song</string>
@@ -25,4 +25,7 @@
     <string name="location_name_text">Name:</string>
     <string name="location_lat_text">Latitude:</string>
     <string name="location_lng_text">Longitude:</string>
+    <string name="btn_share">Share</string>
+    <string name="text_share_to_other_app">Share to other app</string>
+    <string name="text_home">Project2 - Group</string>
 </resources>
