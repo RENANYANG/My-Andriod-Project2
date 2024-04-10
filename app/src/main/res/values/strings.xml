@@ -20,4 +20,6 @@
     <string name="hint_name">Name</string>
     <string name="hint_lat">Lat</string>
     <string name="hint_lng">Lng</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
