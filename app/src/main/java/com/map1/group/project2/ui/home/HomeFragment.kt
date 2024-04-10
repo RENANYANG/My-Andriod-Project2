@@ -31,6 +31,7 @@ class HomeFragment : Fragment() {
 
         binding.btnBack.setOnClickListener{
             Log.d(TAG, "app close")
+            android.os.Process.killProcess(android.os.Process.myPid())
         }
 
         return root
