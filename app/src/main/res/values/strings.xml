@@ -22,4 +22,7 @@
     <string name="hint_lat">Lat</string>
     <string name="hint_lng">Lng</string>
     <string name="location_id_text">ID:</string>
+    <string name="location_name_text">Name:</string>
+    <string name="location_lat_text">Latitude:</string>
+    <string name="location_lng_text">Longitude:</string>
 </resources>

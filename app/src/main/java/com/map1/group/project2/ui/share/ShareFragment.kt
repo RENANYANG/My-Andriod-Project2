@@ -68,6 +68,11 @@ class ShareFragment : Fragment() {
             ) {
                 val selectedLocation = getLocationByIndex(position)
                 Log.d(TAG, selectedLocation.toString())
+
+                binding.locationId.text = selectedLocation?.id
+                binding.locationName.text = selectedLocation?.name
+                binding.locationLat.text = selectedLocation?.lat
+                binding.locationLng.text = selectedLocation?.lng
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
