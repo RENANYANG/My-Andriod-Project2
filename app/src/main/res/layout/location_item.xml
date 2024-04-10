@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_margin="10dp"
+    android:layout_margin="20dp"
     >
 
     <LinearLayout
@@ -37,13 +37,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:paddingLeft="10dp"
             android:hint="@string/hint_name" />
 
         <TextView
             android:id="@+id/location_lat"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_lat" />
+            android:hint="@string/hint_lat"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:id="@+id/location_split"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:hint="/" />
 
         <TextView
             android:id="@+id/location_lng"
@@ -53,8 +63,8 @@
 
         <ImageButton
             android:id="@+id/delete_location"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@android:drawable/presence_busy" />
     </LinearLayout>
 </LinearLayout>
