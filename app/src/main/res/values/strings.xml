@@ -17,9 +17,11 @@
     <string name="btn_back">Back</string>
     <string name="shared_file_saved_locations">com.map1.group.project2.SAVED_LOCATIONS</string>
     <string name="shared_key_saved_locations">SAVED_LOCATIONS</string>
+    <string name="hint_id">Id</string>
     <string name="hint_name">Name</string>
     <string name="hint_lat">Lat</string>
     <string name="hint_lng">Lng</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="location_id_text">ID:</string>
 </resources>

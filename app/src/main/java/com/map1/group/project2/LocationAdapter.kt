@@ -14,6 +14,7 @@ class LocationAdapter(private val itemList: ArrayList<LocationItem>) : RecyclerV
     }
 
     override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
+        holder.tv_id.text = itemList[position].id
         holder.tv_name.text = itemList[position].name
         holder.tv_lat.text = itemList[position].lat
         holder.tv_lng.text = itemList[position].lng
@@ -24,6 +25,7 @@ class LocationAdapter(private val itemList: ArrayList<LocationItem>) : RecyclerV
     }
 
     inner class LocationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tv_id = itemView.findViewById<TextView>(R.id.location_id)
         val tv_name = itemView.findViewById<TextView>(R.id.location_name)
         val tv_lat = itemView.findViewById<TextView>(R.id.location_lat)
         val tv_lng = itemView.findViewById<TextView>(R.id.location_lng)

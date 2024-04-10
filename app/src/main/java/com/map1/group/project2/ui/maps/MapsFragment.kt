@@ -29,6 +29,7 @@ import com.map1.group.project2.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.Exception
+import java.util.UUID
 
 class MapsFragment : Fragment() {
 
@@ -141,7 +142,8 @@ class MapsFragment : Fragment() {
             if (inputLocation.isEmpty()) {
                 Toast.makeText(requireContext(), "Location name is null", Toast.LENGTH_SHORT).show()
             } else {
-                this.saveLocation(LocationItem(inputLocation, strLat, strLng))
+                val locationId = UUID.randomUUID().toString()
+                this.saveLocation(LocationItem(locationId, inputLocation, strLat, strLng))
             }
             dialog.dismiss()
         }
