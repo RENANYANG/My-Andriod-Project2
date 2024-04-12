@@ -1,5 +1,6 @@
 package com.map1.group.project2.ui.option
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,7 +36,8 @@ class OptionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_option, container, false)
+        var view = inflater.inflate(R.layout.fragment_option, container, false)
+        return view
     }
 
     companion object {

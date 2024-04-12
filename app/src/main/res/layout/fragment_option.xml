@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="100dp"
+    android:paddingTop="20dp"
     tools:context=".ui.option.OptionFragment">
 
     <LinearLayout
@@ -20,7 +20,7 @@
             android:layoutDirection="locale"
             android:text="@string/student_name_1"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="34sp" />
+            android:textSize="28sp" />
 
         <TextView
             android:id="@+id/student_id_1"
@@ -30,11 +30,11 @@
             android:layoutDirection="locale"
             android:text="@string/student_id_1"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="34sp" />
+            android:textSize="20sp" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/student_name_2"
@@ -44,7 +44,7 @@
             android:layoutDirection="locale"
             android:text="@string/student_name_2"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="34sp" />
+            android:textSize="28sp" />
 
         <TextView
             android:id="@+id/student_id_2"
@@ -54,11 +54,11 @@
             android:layoutDirection="locale"
             android:text="@string/student_id_2"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="34sp" />
+            android:textSize="20sp" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/student_name_3"
@@ -68,7 +68,7 @@
             android:layoutDirection="locale"
             android:text="@string/student_name_3"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="34sp" />
+            android:textSize="28sp" />
 
         <TextView
             android:id="@+id/student_id_3"
@@ -78,7 +78,7 @@
             android:layoutDirection="locale"
             android:text="@string/student_id_3"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="34sp" />
+            android:textSize="20sp" />
 
         <Space
             android:layout_width="match_parent"
