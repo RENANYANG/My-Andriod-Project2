@@ -53,12 +53,50 @@ class ShareFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentShareBinding.inflate(inflater, container, false)
 
+        setSpinner()
+        setShare()
+        setDelete()
+
+        return binding.root
+    }
+
+    private fun setShare() {
+        binding.btnShare.setOnClickListener{
+            Log.d(TAG, "click share button")
+
+            var shareContent = "This is my favorite location"
+            shareContent += "\n\n * ID: ${binding.locationId.text}"
+            shareContent += "\n\n * Name: ${binding.locationName.text}"
+            shareContent += "\n\n * Latitude: ${binding.locationLat.text}"
+            shareContent += "\n\n * Longitude: ${binding.locationLng.text}"
+
+            val intent = Intent(Intent.ACTION_SEND_MULTIPLE)
+            intent.type = "text/plain"
+            intent.putExtra(Intent.EXTRA_TEXT, shareContent)
+            startActivity(Intent.createChooser(intent, getString(R.string.text_share_to_other_app)))
+        }
+    }
+
+    private fun setDelete() {
+        binding.btnDelete.setOnClickListener {
+            Log.d(TAG, "click delete button : ${currentPosition}")
+            deleteLocation(currentPosition)
+            setSpinner()
+        }
+    }
+
+    private fun setSpinner() {
         val locationList = this.getLocationList()
         val items = ArrayList<String>()
 
         locationList?.forEach {
             items.add(" >  ${it.name} ")
         }
+
+        binding.locationId.hint = "-"
+        binding.locationName.hint = "-"
+        binding.locationLat.hint = "0.0"
+        binding.locationLng.hint = "0.0"
 
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, items)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -84,28 +122,6 @@ class ShareFragment : Fragment() {
                 Log.d(TAG, "onNothingSelected")
             }
         }
-
-        binding.btnShare.setOnClickListener{
-            Log.d(TAG, "click share button")
-
-            var shareContent = "This is my favorite location"
-            shareContent += "\n\n * ID: ${binding.locationId.text}"
-            shareContent += "\n\n * Name: ${binding.locationName.text}"
-            shareContent += "\n\n * Latitude: ${binding.locationLat.text}"
-            shareContent += "\n\n * Longitude: ${binding.locationLng.text}"
-
-            val intent = Intent(Intent.ACTION_SEND_MULTIPLE)
-            intent.type = "text/plain"
-            intent.putExtra(Intent.EXTRA_TEXT, shareContent)
-            startActivity(Intent.createChooser(intent, getString(R.string.text_share_to_other_app)))
-        }
-
-        binding.btnDelete.setOnClickListener {
-            Log.d(TAG, "click delete button : ${currentPosition}")
-            deleteLocation(currentPosition)
-        }
-
-        return binding.root
     }
 
     private fun getLocationList(): ArrayList<LocationItem>? {
