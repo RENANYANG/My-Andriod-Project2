@@ -89,14 +89,16 @@ class ShareFragment : Fragment() {
         val locationList = this.getLocationList()
         val items = ArrayList<String>()
 
+        var index = 1
         locationList?.forEach {
-            items.add(" >  ${it.name} ")
+            items.add(String.format("%d.  %s", index, it.name))
+            index += 1
         }
 
-        binding.locationId.hint = "-"
-        binding.locationName.hint = "-"
-        binding.locationLat.hint = "0.0"
-        binding.locationLng.hint = "0.0"
+        binding.locationId.text = "-"
+        binding.locationName.text = "-"
+        binding.locationLat.text = "0.0"
+        binding.locationLng.text = "0.0"
 
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, items)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -138,6 +140,7 @@ class ShareFragment : Fragment() {
 
     private fun deleteLocation(position: Int) {
         val locationInfoList = this.getLocationList()
+        val deletedLocationItem = locationInfoList?.get(position)
         locationInfoList?.removeAt(position)
 
         Log.d(TAG, locationInfoList.toString())
@@ -148,7 +151,7 @@ class ShareFragment : Fragment() {
             apply()
         }
 
-        Toast.makeText(requireContext(), "Delete the location [${position}].", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Delete the location (${deletedLocationItem?.name}).", Toast.LENGTH_SHORT).show()
     }
 
     private fun getLocationByIndex(index: Int): LocationItem? {

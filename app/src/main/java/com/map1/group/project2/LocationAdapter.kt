@@ -27,6 +27,7 @@ class LocationAdapter(private val itemList: ArrayList<LocationItem>) : RecyclerV
         holder.tv_name.text = itemList[position].name
         holder.tv_lat.text = itemList[position].lat
         holder.tv_lng.text = itemList[position].lng
+        holder.tv_position.text = String.format("%d.", position +1)
     }
 
     override fun getItemCount(): Int {
@@ -38,6 +39,7 @@ class LocationAdapter(private val itemList: ArrayList<LocationItem>) : RecyclerV
         val tv_name = itemView.findViewById<TextView>(R.id.location_name)
         val tv_lat = itemView.findViewById<TextView>(R.id.location_lat)
         val tv_lng = itemView.findViewById<TextView>(R.id.location_lng)
+        val tv_position = itemView.findViewById<TextView>(R.id.location_position)
 
         init {
             itemView.setOnClickListener {
