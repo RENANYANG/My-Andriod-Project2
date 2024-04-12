@@ -15,6 +15,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.map1.group.project2.Constants.TAG
 import com.map1.group.project2.LocationItem
+import com.map1.group.project2.MainActivity
 import com.map1.group.project2.R
 import com.map1.group.project2.databinding.FragmentShareBinding
 import java.lang.Exception
@@ -120,17 +121,17 @@ class ShareFragment : Fragment() {
     }
 
     private fun deleteLocation(position: Int) {
-//        val locationInfoList = this.getLocationList()
-//        locationInfoList?.add(locationInfo)
-//
-//        Log.d(TAG, locationInfoList.toString())
-//
-//        val sharedPref = activity?.getSharedPreferences(getString(R.string.shared_file_saved_locations), Context.MODE_PRIVATE) ?: return
-//        with (sharedPref.edit()) {
-//            putString(getString(R.string.shared_key_saved_locations), Gson().toJson(locationInfoList))
-//            apply()
-//        }
-//
+        val locationInfoList = this.getLocationList()
+        locationInfoList?.removeAt(position)
+
+        Log.d(TAG, locationInfoList.toString())
+
+        val sharedPref = activity?.getSharedPreferences(getString(R.string.shared_file_saved_locations), Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putString(getString(R.string.shared_key_saved_locations), Gson().toJson(locationInfoList))
+            apply()
+        }
+
         Toast.makeText(requireContext(), "Delete the location [${position}].", Toast.LENGTH_SHORT).show()
     }
 
