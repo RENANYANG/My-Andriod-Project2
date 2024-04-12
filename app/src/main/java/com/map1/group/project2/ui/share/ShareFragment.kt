@@ -54,7 +54,7 @@ class ShareFragment : Fragment() {
         val items = ArrayList<String>()
 
         locationList?.forEach {
-            items.add("[${it.lat}/${it.lng}] ${it.name} ")
+            items.add(" >  ${it.name} ")
         }
 
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, items)

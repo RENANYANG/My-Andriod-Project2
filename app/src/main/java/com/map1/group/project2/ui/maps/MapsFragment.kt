@@ -123,6 +123,8 @@ class MapsFragment : Fragment() {
                 .title("Point")
                 .snippet(String.format("Lat/Lng: (%.4f, %.4f)", it.latitude, it.longitude))
             )
+
+            Toast.makeText(requireContext(), String.format("Point new location (%.4f, %.4f)", it.latitude, it.longitude), Toast.LENGTH_SHORT).show()
         }
     }
 
