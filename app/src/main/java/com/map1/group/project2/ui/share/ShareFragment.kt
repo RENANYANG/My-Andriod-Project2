@@ -74,6 +74,7 @@ class ShareFragment : Fragment() {
                 binding.locationName.text = selectedLocation?.name
                 binding.locationLat.text = selectedLocation?.lat
                 binding.locationLng.text = selectedLocation?.lng
+                binding.listPosition.text = position.toString()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -94,6 +95,10 @@ class ShareFragment : Fragment() {
             intent.type = "text/plain"
             intent.putExtra(Intent.EXTRA_TEXT, shareContent)
             startActivity(Intent.createChooser(intent, getString(R.string.text_share_to_other_app)))
+        }
+
+        binding.btnDelete.setOnClickListener {
+            Log.d(TAG, "click delete button : ${binding.listPosition.text}")
         }
 
         //return inflater.inflate(R.layout.fragment_share, container, false)

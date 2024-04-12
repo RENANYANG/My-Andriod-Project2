@@ -28,4 +28,5 @@
     <string name="btn_share">Share</string>
     <string name="text_share_to_other_app">Share to other app</string>
     <string name="text_home">Project2 - Group</string>
+    <string name="btn_delete">Delete</string>
 </resources>

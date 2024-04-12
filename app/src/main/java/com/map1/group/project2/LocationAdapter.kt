@@ -1,5 +1,6 @@
 package com.map1.group.project2
 
+import android.content.Context
 import android.media.Image
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +10,10 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.map1.group.project2.Constants.TAG
+import java.lang.Exception
 
 class LocationAdapter(private val itemList: ArrayList<LocationItem>) : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>() {
 
@@ -23,6 +27,11 @@ class LocationAdapter(private val itemList: ArrayList<LocationItem>) : RecyclerV
         holder.tv_name.text = itemList[position].name
         holder.tv_lat.text = itemList[position].lat
         holder.tv_lng.text = itemList[position].lng
+
+        holder.tv_delete_image.setOnClickListener{
+            Log.d(TAG, "Do delete : ${position} / ${itemList[position].id}")
+            itemList.removeAt(position)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -34,9 +43,10 @@ class LocationAdapter(private val itemList: ArrayList<LocationItem>) : RecyclerV
         val tv_name = itemView.findViewById<TextView>(R.id.location_name)
         val tv_lat = itemView.findViewById<TextView>(R.id.location_lat)
         val tv_lng = itemView.findViewById<TextView>(R.id.location_lng)
+        val tv_delete_image = itemView.findViewById<ImageButton>(R.id.imageButton)
 
         init {
-            itemView.setOnClickListener{
+            itemView.setOnClickListener {
                 Toast.makeText(itemView.context, "Latitude: ${tv_lat.text} / Longitude: ${tv_lng.text}", Toast.LENGTH_SHORT).show()
             }
         }
