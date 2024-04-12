@@ -140,12 +140,5 @@
                 android:layout_weight="1"
                 android:text="@string/btn_delete" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/list_position"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:visibility="gone" />
     </LinearLayout>
 </FrameLayout>

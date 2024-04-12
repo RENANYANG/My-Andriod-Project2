@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.map1.group.project2.Constants.TAG
@@ -34,6 +35,7 @@ class ShareFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var currentPosition: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,13 +70,13 @@ class ShareFragment : Fragment() {
                 id: Long
             ) {
                 val selectedLocation = getLocationByIndex(position)
+                currentPosition = position
                 Log.d(TAG, selectedLocation.toString())
 
                 binding.locationId.text = selectedLocation?.id
                 binding.locationName.text = selectedLocation?.name
                 binding.locationLat.text = selectedLocation?.lat
                 binding.locationLng.text = selectedLocation?.lng
-                binding.listPosition.text = position.toString()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -98,10 +100,10 @@ class ShareFragment : Fragment() {
         }
 
         binding.btnDelete.setOnClickListener {
-            Log.d(TAG, "click delete button : ${binding.listPosition.text}")
+            Log.d(TAG, "click delete button : ${currentPosition}")
+            deleteLocation(currentPosition)
         }
 
-        //return inflater.inflate(R.layout.fragment_share, container, false)
         return binding.root
     }
 
@@ -115,6 +117,21 @@ class ShareFragment : Fragment() {
         } catch (e: Exception){
             return ArrayList<LocationItem>()
         }
+    }
+
+    private fun deleteLocation(position: Int) {
+//        val locationInfoList = this.getLocationList()
+//        locationInfoList?.add(locationInfo)
+//
+//        Log.d(TAG, locationInfoList.toString())
+//
+//        val sharedPref = activity?.getSharedPreferences(getString(R.string.shared_file_saved_locations), Context.MODE_PRIVATE) ?: return
+//        with (sharedPref.edit()) {
+//            putString(getString(R.string.shared_key_saved_locations), Gson().toJson(locationInfoList))
+//            apply()
+//        }
+//
+        Toast.makeText(requireContext(), "Delete the location [${position}].", Toast.LENGTH_SHORT).show()
     }
 
     private fun getLocationByIndex(index: Int): LocationItem? {
