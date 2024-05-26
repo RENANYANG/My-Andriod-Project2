@@ -1,3 +1,4 @@
-Autor:ANYANG REN
+Autor:ANYANG REN Andrew Youngtaek Song
 Email:ryaren991128@mail.com
-this is my andriod project2
+this is our andriod project2
+
